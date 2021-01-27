@@ -1,11 +1,11 @@
-# easy-store
+# @mudas/store
 
 > Use vuex in a more concise and convenient way
 
 ### Usage
 
 ``` bash
-$ npm install -S @mudas/easy-store
+$ npm install -S @mudas/store
 ```
 
 ### Option

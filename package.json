@@ -1,5 +1,5 @@
 {
-	"name": "@mudas/easy-store",
+	"name": "@mudas/store",
 	"version": "0.0.1",
 	"description": "Use vuex in a more concise and convenient way",
 	"author": "张雄军 <zxj@blibao.cn>",
