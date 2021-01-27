@@ -13,6 +13,7 @@ import Sweep from './sweep';
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
+  strict: true,
   modules: {
     [Module.SWEEP]: Sweep
   }

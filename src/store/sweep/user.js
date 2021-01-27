@@ -13,6 +13,10 @@ const SWEEP_USER_INFO = Types.SWEEP_USER_INFO.namespace;
 const Config = [
   {
     type: SWEEP_USER_INFO,
+    params: {
+      data: { a: 10 },
+      config: { headers: { 'custom-head': 'test' } }
+    },
     url: { url: '/index/getUserInfo', http: Vue.http, method: 'get' }
   }
 ];

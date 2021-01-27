@@ -19,7 +19,7 @@ export default class EasyStore {
 
   /**
    * 构建 EasyStore 实例
-   * @param {{type:string, url:{http:any, method?:string, url:string}}[]} [config=null] 额外配置
+   * @param {EasyStoreConfig[]} [config=null] 额外配置
    * @param {EasyStoreModule<any,any>} [options=null] 参数同 registerStore
    */
   constructor(config = null, options = null) {
@@ -41,7 +41,7 @@ export default class EasyStore {
   // ----------------------------------------
 
   static Template = {
-    namespaced: true,
+    namespaced: true, // 强制使用 namespaced 命名空间路径
     state: Object.create(null),
     getters: Object.create(null),
     mutations: Object.create(null),
@@ -111,18 +111,26 @@ export default class EasyStore {
    * 注册 Action 方法
    * @param {String} type 类型标识
    * @param {URLConfig} url 接口配置地址（若不配置将省略 action 的注册）
-   * @param {EasyStoreAction} [action=null]
+   * @param {EasyStoreAction<any, any>} [action=null]
+   * @param {CommonParams} [params=null] 每次请求都会加入的全局参数数据，如 {data:{a:10,...}, conf:{headers:{...}, timeout:1000}}
    */
-  registerAction(type, url, action = null) {
+  registerAction(type, url, action = null, params = null) {
     url = typeof url === 'string' ? { url } : url;
 
+    const { data, config } = params || {};
     const { url: realURL, method = 'get', http } = url;
     const func = http[method.toLowerCase()];
 
     if (typeof func !== 'function') throw new Error('Non-existent http method');
 
-    action = action || function(context, params) {
-      return func.call(http, realURL, params).then(({ data }) => {
+    // conf: AxiosRequestConfig - 可用于自定义 headers，例如 { headers: { 'Content-type': 'application/x-www-form-urlencoded' } }
+    action = action || function(context, params, conf) {
+      // 全局自定义数据和参数的支持
+      params = { ...data, ...params };
+      conf = { ...config, ...conf };
+
+      // 发出 http 请求
+      return func.call(http, realURL, params, conf).then(({ data }) => {
         context.commit(type, data.data);
         return Promise.resolve(data.data);
       }).catch(reason => Promise.reject(reason));
@@ -142,10 +150,10 @@ export default class EasyStore {
    */
   register(option) {
 
-    const { type, url, state = null, getter = null, mutation = null, action = null, notSave = false } = option;
+    const { type, url, state = null, getter = null, mutation = null, action = null, params = null, notSave = false } = option;
 
     // 设置 url 才注册 action
-    url && this.registerAction(type, url, action);
+    url && this.registerAction(type, url, action, params);
 
     // 不保存数据，将不注册 state, getter, mutation
     !notSave && this.registerState(type, state);

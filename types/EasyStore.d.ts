@@ -4,7 +4,7 @@
 // created: 2021/1/27
 // ------------------------------------------------------------------------------
 
-import { GetterTree, ActionTree, MutationTree, ModuleTree, ActionHandler, ActionObject } from 'vuex';
+import { GetterTree, ActionTree, MutationTree, ModuleTree, Store, ActionContext } from 'vuex';
 
 export declare interface EasyStoreInstance<S, R> {
 
@@ -36,8 +36,9 @@ export declare interface EasyStoreInstance<S, R> {
    * @param {String} type 类型标识
    * @param {URLConfig} url 接口配置地址（若不配置将省略 action 的注册）
    * @param {EasyStoreAction<any, any>} [action=null]
+   * @param {CommonParams} [params=null] 每次请求都会加入的参数数据，如 {data:{a:10,...}, conf:{headers:{...}, timeout:1000}}
    */
-  registerAction(type: string, url?: URLConfig, action?: EasyStoreAction<S, R>): void;
+  registerAction(type: string, url?: URLConfig, action?: EasyStoreAction<S, R>, params?: CommonParams): void;
 
   /**
    * 注册单个 store 模块
@@ -52,6 +53,11 @@ export declare interface EasyStoreInstance<S, R> {
   output(): EasyStoreModule<S, R>;
 }
 
+export interface CommonParams {
+  data?: any;
+  config?: any;
+}
+
 export interface EasyStoreModule<S, R> {
   namespaced?: boolean;
   state?: S | (() => S);
@@ -64,6 +70,13 @@ export interface EasyStoreModule<S, R> {
 export type EasyStoreGetter<S, R> = (state: S, getters: any, rootState: R, rootGetters: any) => any;
 export type EasyStoreAction<S, R> = ActionHandler<S, R> | ActionObject<S, R>;
 export type EasyStoreMutation<S> = (state: S, payload?: any) => any;
+
+export type ActionHandler<S, R> = (this: Store<R>, injectee: ActionContext<S, R>, payload?: any, conf?: any) => any;
+
+export interface ActionObject<S, R> {
+  root?: boolean;
+  handler: ActionHandler<S, R>;
+}
 
 export declare interface EasyStoreStatic<S, R> {
   Template: EasyStoreModule<S, R>;
@@ -89,6 +102,9 @@ export declare interface EasyStoreConfig<S, R> {
 
   // 自定义 action 方法（一般无须指定，自动根据 url 生成对应的接口请求方法）
   action?: EasyStoreAction<S, R>;
+
+  // 每次请求都会加入的参数数据，如 {data:{a:10,...}, conf:{headers:{...}, timeout:1000}}
+  params?: CommonParams;
 
   // 是否不需要将 action 请求的数据存储到 state 中
   notSave?: boolean;
