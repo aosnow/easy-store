@@ -1,14 +1,7 @@
 // ------------------------------------------------------------------------------
-// name: index
+// name: debug
 // author: mudas( mschool.tech )
-// created: 2020/3/19 13:53
+// created: 2021/3/3 11:34
 // ------------------------------------------------------------------------------
 
-import { merge } from '@mudas/store';
-import User from './user';
-import Shop from './shop';
-
-export default merge([
-  User,
-  Shop
-]);
+export const DEBUG = process.env.NODE_ENV !== 'production';

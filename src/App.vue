@@ -8,6 +8,9 @@
         <el-button @click="requestUser">request user</el-button>
       </h3>
       <pre class="content">{{userInfo}}</pre>
+      <pre class="content">{{userInfo.other}}</pre>
+      <pre class="content">{{userInfo|get('memberInfo.mobile')}}</pre>
+      <pre class="content">{{userInfo.memberInfo}}</pre>
     </div>
 
     <div>
@@ -33,6 +36,16 @@ export default {
       value: ''
     };
   },
+
+  filters: {
+    get(input, path) {
+      console.warn(input, path, input[path]);
+      return path.split('.').reduce((result, cur) => {
+        return result && result[cur] || undefined;
+      }, input);
+    }
+  },
+
   computed: {
     ...mapGetters({
       userInfo: Types.SWEEP_USER_INFO,
@@ -65,7 +78,7 @@ export default {
 
 .content {
   min-height: 200px;
-  max-height: 500px;
+  max-height: 300px;
   border: 1px dotted lightseagreen;
   border-radius: 8px;
   overflow-y: auto;

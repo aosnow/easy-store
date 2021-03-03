@@ -4,7 +4,8 @@
 // created: 2021/1/27
 // ------------------------------------------------------------------------------
 
-import { GetterTree, ActionTree, MutationTree, ModuleTree, Store, ActionContext } from 'vuex';
+import { GetterTree, ActionTree, MutationTree, ModuleTree, Module, Store, ActionContext } from 'vuex';
+import { AxiosRequestConfig } from 'axios';
 
 export declare interface EasyStoreInstance<S, R> {
 
@@ -36,7 +37,7 @@ export declare interface EasyStoreInstance<S, R> {
    * @param {String} type 类型标识
    * @param {URLConfig} url 接口配置地址（若不配置将省略 action 的注册）
    * @param {EasyStoreAction<any, any>} [action=null]
-   * @param {CommonParams} [params=null] 每次请求都会加入的参数数据，如 {data:{a:10,...}, conf:{headers:{...}, timeout:1000}}
+   * @param {CommonParams} [params=null] 每次请求都会加入的参数数据，如 {data:{a:10,...}, config:{headers:{...}, timeout:1000}}
    */
   registerAction(type: string, url?: URLConfig, action?: EasyStoreAction<S, R>, params?: CommonParams): void;
 
@@ -50,15 +51,28 @@ export declare interface EasyStoreInstance<S, R> {
   /**
    * 输出 Store.Module 配置数据
    */
-  output(): EasyStoreModule<S, R>;
+  output(): Module<S, R>;
 }
 
 export interface CommonParams {
-  data?: any;
-  config?: any;
+  data?: Object | (() => Object);
+  config?: AxiosRequestConfig;
+}
+
+export interface RegisterScheme {
+  state?: boolean;
+  getter?: boolean;
+  mutation?: boolean;
+  action?: boolean;
 }
 
 export interface EasyStoreModule<S, R> {
+  // 每次请求都会加入的参数数据，如 {data:{a:10,...}, config:{headers:{...}, timeout:1000}}
+  params?: CommonParams; // 全局，所有请求都会提交该数据
+
+  // 是否增量存储数据到 state 中
+  increment?: boolean;
+
   namespaced?: boolean;
   state?: S | (() => S);
   getters?: GetterTree<S, R>;
@@ -88,7 +102,7 @@ export declare interface EasyStoreConfig<S, R> {
   // type 类型标识
   type: string;
 
-  // 接口配置地址（若不配置将省略 action 的注册）
+  // 接口配置地址（若不配置将省略 action 的注册，除非自定义 action 方法）
   url?: URLConfig;
 
   // State的默认值
@@ -103,11 +117,14 @@ export declare interface EasyStoreConfig<S, R> {
   // 自定义 action 方法（一般无须指定，自动根据 url 生成对应的接口请求方法）
   action?: EasyStoreAction<S, R>;
 
-  // 每次请求都会加入的参数数据，如 {data:{a:10,...}, conf:{headers:{...}, timeout:1000}}
+  // 每次请求都会加入的参数数据，如 {data:{a:10,...}, config:{headers:{...}, timeout:1000}}
   params?: CommonParams;
 
-  // 是否不需要将 action 请求的数据存储到 state 中
-  notSave?: boolean;
+  // 是否增量存储数据到 state 中
+  increment?: boolean;
+
+  // 手动指定 state、getter、mutation、action 的注册方案
+  scheme?: RegisterScheme;
 }
 
 export declare interface URLConfig {

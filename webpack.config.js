@@ -15,7 +15,7 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       '@': resolve('src'),
-      '@mudas/easy-store': resolve('packages')
+      '@mudas/store': resolve('packages')
     }
   }
 };

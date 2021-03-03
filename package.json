@@ -4,22 +4,33 @@
 	"description": "Use vuex in a more concise and convenient way",
 	"author": "张雄军 <zxj@blibao.cn>",
 	"license": "MIT",
-	"main": "dist/easy-store.common.js",
-	"module": "dist/easy-store.esm.js",
-	"homepage": "",
+	"main": "dist/store.common.js",
+	"module": "dist/store.esm.js",
+	"homepage": "https://github.com/aosnow/easy-store",
+	"bugs": {
+		"url": "https://github.com/aosnow/easy-store/issues"
+	},
 	"repository": {
 		"type": "git",
-		"url": ""
+		"url": "https://github.com/aosnow/easy-store"
 	},
 	"keywords": [],
 	"scripts": {
 		"serve": "vue-cli-service serve",
 		"build": "rollup -c",
+		"docs:md": "node ./scripts/jsdoc",
+		"docs:dev": "npm run docs:md && vuepress dev docs --no-cache",
+		"docs:build": "npm run docs:md && vuepress build docs",
+		"deploy": "node ./scripts/gh-pages",
 		"lint": "vue-cli-service lint",
 		"test:unit": "vue-cli-service test:unit",
-		"pub": "npm run build && npm publish --access=public"
+		"pub:docs": "npm run docs:build && npm run deploy",
+		"pub": "npm run pub:docs && npm run build && npm publish --access=public"
 	},
 	"typings": "types/index.d.ts",
+	"gitHooks": {
+		"commit-msg": "node scripts/verifyCommitMsg.js"
+	},
 	"files": [
 		"dist",
 		"packages",
@@ -31,11 +42,11 @@
 		"fsevents": "*"
 	},
 	"dependencies": {
+		"@mudas/util": "0.0.3",
 		"core-js": "^3.8.3"
 	},
 	"devDependencies": {
 		"@mudas/http": "0.0.28",
-		"@mudas/util-store": "0.0.6",
 		"@vue/cli-plugin-babel": "~4.5.0",
 		"@vue/cli-plugin-eslint": "~4.5.0",
 		"@vue/cli-plugin-unit-jest": "~4.5.0",
@@ -45,20 +56,23 @@
 		"@vue/test-utils": "^1.0.3",
 		"babel-eslint": "^10.1.0",
 		"babel-plugin-import": "^1.12.2",
+		"element-ui": "^2.13.1",
 		"eslint": "^6.7.2",
 		"eslint-plugin-import": "^2.20.2",
 		"eslint-plugin-vue": "^6.2.2",
+		"gh-pages": "^3.1.0",
+		"jsdoc-to-markdown": "^7.0.0",
 		"less": "^3.13.1",
 		"less-loader": "^5.0.0",
 		"node-sass": "^4.14.1",
-		"sass-loader": "^8.0.2",
-		"vconsole": "^3.3.4",
-		"vue-template-compiler": "^2.6.12",
-		"element-ui": "^2.13.1",
 		"rollup": "^2.6.1",
 		"rollup-plugin-delete": "^1.2.0",
 		"rollup-plugin-vue": "^5.1.6",
-		"vue": "^2.6.11",
+		"sass-loader": "^8.0.2",
+		"vconsole": "^3.3.4",
+		"vue": "^2.6.12",
+		"vue-template-compiler": "^2.6.12",
+		"vuepress": "^1.8.2",
 		"vuex": "^3.6.0"
 	}
 }

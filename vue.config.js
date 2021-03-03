@@ -68,7 +68,7 @@ module.exports = {
     config.resolve.alias.set('@', resolve('src'));
 
     // 开发阶段的别名
-    config.resolve.alias.set('@mudas/easy-store', resolve('packages'));
+    config.resolve.alias.set('@mudas/store', resolve('packages'));
 
     // 打包后的测试别名
     // config.resolve.alias.set('@mudas/easy-store', resolve('dist/easy-store.common.js'));

@@ -6,5 +6,9 @@
 
 import EasyStore from './easy-store';
 
+export * from './merge';
+export * from './namespace';
+export * from './increment';
+
 export default EasyStore;
 export { EasyStore };

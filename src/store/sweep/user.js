@@ -6,19 +6,39 @@
 
 import Vue from 'vue';
 import * as Types from '@/store/types';
-import EasyStore from '@mudas/easy-store';
-
-const SWEEP_USER_INFO = Types.SWEEP_USER_INFO.namespace;
+import EasyStore, { namespace } from '@mudas/store';
 
 const Config = [
   {
-    type: SWEEP_USER_INFO,
+    type: namespace(Types.SWEEP_USER_INFO),
+    // state: {
+    //   other: {
+    //     a: 1
+    //   },
+    //   memberInfo: {
+    //     uid: '',
+    //     nick: ''
+    //   }
+    // },
+    // increment: true,
     params: {
       data: { a: 10 },
       config: { headers: { 'custom-head': 'test' } }
     },
-    url: { url: '/index/getUserInfo', http: Vue.http, method: 'get' }
+    url: {
+      url: '/index/getUserInfo',
+      http: Vue.http,
+      method: 'get'
+    },
+    action(context, params, conf) {
+      return Vue.http.get('/index/getUserInfo', { ...params }, conf)
+                .then(({ data }) => {
+                  context.commit(namespace(Types.SWEEP_USER_INFO), data.data);
+                  return Promise.resolve(data.data);
+                })
+                .catch(reason => Promise.reject(reason));
+    }
   }
 ];
 
-export default new EasyStore(Config).output();
+export default new EasyStore(Config, { params: { data: { b: 20 } } }).output();

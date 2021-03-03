@@ -1,15 +1,10 @@
-# @mudas/store
-
-> Use vuex in a more concise and convenient way
-
-### Usage
-
-``` bash
-npm install -S @mudas/store
+## 快速安装
+```bash
+npm install @mudas/store -S
 ```
 
-## Build Option
-By default, babel-loader does not translate all files in node_modules, so specifying node_modules separately requires the esm module that babel translates
+## 构建参数
+默认情况下 babel-loader 不转译所有 node_modules 中的文件，因此单独指定 node_modules 需要让 babel 转译的 esm 模块
 ```js
 module.exports = {
   transpileDependencies: [
@@ -17,8 +12,9 @@ module.exports = {
   ]
 };
 ```
+> 注意：以上为 `vue.config.js` 配置方法，其它构建环境请自行查阅相关文档。
 
-### Option
+## 配置参数
 Use the 'EasyStoreConfig' to register multiple stores
 ```ts
 export declare interface EasyStoreConfig<S, R> {
@@ -70,7 +66,7 @@ export interface RegisterScheme {
 ```
 > Note: for more information, please see types
 
-### Usage example
+## 使用示例
 ```js
 const USER_LOGIN = 'login';
 const USER_LOGINOUT = 'login-out';
@@ -117,3 +113,11 @@ const storeConfig = [
 
 export default new EasyStore(storeConfig).output();
 ```
+
+## 目录
+- [快速上手指南](./guide)
+- [Easy Store](./easy-store)
+### 其它工具
+- [namespace types 工具](./namespace)
+- [increment 增量保存工具](./increment)
+- [Store 模块合并工具](./merge)

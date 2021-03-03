@@ -6,13 +6,11 @@
 
 import Vue from 'vue';
 import * as Types from '@/store/types';
-import EasyStore from '@mudas/easy-store';
-
-const SWEEP_SHOP_INFO = Types.SWEEP_SHOP_INFO.namespace;
+import EasyStore, { namespace } from '@mudas/store';
 
 const Config = [
   {
-    type: SWEEP_SHOP_INFO,
+    type: namespace(Types.SWEEP_SHOP_INFO),
     url: { url: '/index/getShopperInfo', http: Vue.http }
   }
 ];

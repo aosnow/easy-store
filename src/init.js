@@ -5,8 +5,6 @@
 // ------------------------------------------------------------------------------
 
 import Vue from 'vue';
-import NativeJS from '@/native';
 import Http from '@/http';
 
-Vue.use(NativeJS);
 Vue.use(Http);
