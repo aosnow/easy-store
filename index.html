@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>@mudas/store</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="Use vuex in a more concise and convenient way">
+    
+    <link rel="preload" href="/util/assets/css/0.styles.c159fa60.css" as="style"><link rel="preload" href="/util/assets/js/app.f8e311cb.js" as="script"><link rel="preload" href="/util/assets/js/2.8f651a70.js" as="script"><link rel="preload" href="/util/assets/js/7.98f1bc14.js" as="script"><link rel="prefetch" href="/util/assets/js/10.b9ea78dd.js"><link rel="prefetch" href="/util/assets/js/11.34f004de.js"><link rel="prefetch" href="/util/assets/js/12.7ee5eec0.js"><link rel="prefetch" href="/util/assets/js/3.84cd96c7.js"><link rel="prefetch" href="/util/assets/js/4.03a82865.js"><link rel="prefetch" href="/util/assets/js/5.eb326c15.js"><link rel="prefetch" href="/util/assets/js/6.3669da44.js"><link rel="prefetch" href="/util/assets/js/8.88bf45c6.js"><link rel="prefetch" href="/util/assets/js/9.6f273eb5.js">
+    <link rel="stylesheet" href="/util/assets/css/0.styles.c159fa60.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/util/" aria-current="page" class="home-link router-link-exact-active router-link-active"><!----> <span class="site-name">@mudas/store</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/util/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  首页
+</a></div><div class="nav-item"><a href="/util/guide.html" class="nav-link">
+  指南
+</a></div><div class="nav-item"><a href="https://github.com/aosnow/easy-store" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/util/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  首页
+</a></div><div class="nav-item"><a href="/util/guide.html" class="nav-link">
+  指南
+</a></div><div class="nav-item"><a href="https://github.com/aosnow/easy-store" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/util/guide.html" class="sidebar-link">快速上手指南</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/util/guide.html#快速安装" class="sidebar-link">快速安装</a></li><li class="sidebar-sub-header"><a href="/util/guide.html#构建参数" class="sidebar-link">构建参数</a></li><li class="sidebar-sub-header"><a href="/util/guide.html#配置参数" class="sidebar-link">配置参数</a></li><li class="sidebar-sub-header"><a href="/util/guide.html#使用示例" class="sidebar-link">使用示例</a></li><li class="sidebar-sub-header"><a href="/util/guide.html#目录" class="sidebar-link">目录</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/util/guide.html#其它工具" class="sidebar-link">其它工具</a></li></ul></li></ul></li><li><a href="/util/easy-store.html" class="sidebar-link">Easy Store</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/util/easy-store.html#functions" class="sidebar-link">Functions</a></li><li class="sidebar-sub-header"><a href="/util/easy-store.html#registerstate-type-value-increment" class="sidebar-link">registerState(type, [value], [increment])</a></li><li class="sidebar-sub-header"><a href="/util/easy-store.html#registergetter-type-getter" class="sidebar-link">registerGetter(type, [getter])</a></li><li class="sidebar-sub-header"><a href="/util/easy-store.html#registermutation-type-mutation-increment" class="sidebar-link">registerMutation(type, [mutation], [increment])</a></li><li class="sidebar-sub-header"><a href="/util/easy-store.html#registeraction-type-url-action-params" class="sidebar-link">registerAction(type, url, [action], [params])</a></li><li class="sidebar-sub-header"><a href="/util/easy-store.html#register-option" class="sidebar-link">register(option)</a></li><li class="sidebar-sub-header"><a href="/util/easy-store.html#output" class="sidebar-link">output()</a></li></ul></li><li><section class="sidebar-group collapsable depth-0"><a href="/util/boolean" class="sidebar-heading clickable"><span>其它工具</span> <span class="arrow right"></span></a> <!----></section></li></ul> </aside> <main aria-labelledby="main-title" class="home"><header class="hero"><img src="/util/hero.png" alt="hero"> <h1 id="main-title">
+      @mudas/store
+    </h1> <p class="description">
+      Use vuex in a more concise and convenient way
+    </p> <p class="action"><a href="/util/guide.html" class="nav-link action-button">
+  快速上手指南 →
+</a></p></header> <div class="features"><div class="feature"><h2>简洁易用</h2> <p>摒弃传统注册写法，使用省略大部分重复/冗余注册代码内容。</p></div><div class="feature"><h2>支持 ES6</h2> <p>构建 ES6 包 store.esm.js，支持 ES6 tree-shaking。</p></div><div class="feature"><h2>扩展功能</h2> <p>支持增量保存方式写入 state 数据。</p></div></div> <div class="theme-default-content custom content__default"></div> <div class="footer">
+    MIT Licensed | Copyright © 2021 mudas
+  </div></main></div><div class="global-ui"></div></div>
+    <script src="/util/assets/js/app.f8e311cb.js" defer></script><script src="/util/assets/js/2.8f651a70.js" defer></script><script src="/util/assets/js/7.98f1bc14.js" defer></script>
+  </body>
+</html>
