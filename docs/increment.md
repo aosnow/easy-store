@@ -5,8 +5,8 @@
 
 **Kind**: global function  
 
-| Param | Description |
-| --- | --- |
-| state | store.state.item |
-| data | 需要保存的数据体 |
+| Param | Type | Description |
+| --- | --- | --- |
+| state | <code>Object</code> | store.state.item |
+| data | <code>Object</code> | 需要保存的数据体 |
 

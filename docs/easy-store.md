@@ -78,10 +78,7 @@
 <a name="register"></a>
 
 ## register(option)
-注册单个 store 模块
-<p>目的旨在简化 store 注册结构，减少重复劳动。</p>
-<p>在不指定 scheme 参数的默认情况下，state, getter, mutation 都会注册</p>
-<p>在指定 increment 增量保存数据开关为打开状态时，必须保障对应的 state 为 Object 类型</p>
+注册单个 store 模块<p>目的旨在简化 store 注册结构，减少重复劳动。</p><p>在不指定 scheme 参数的默认情况下，state, getter, mutation 都会注册</p><p>在指定 increment 增量保存数据开关为打开状态时，必须保障对应的 state 为 Object 类型</p>
 
 **Kind**: global function  
 

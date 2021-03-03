@@ -4,7 +4,7 @@
 // created: 2021/1/27
 // ------------------------------------------------------------------------------
 
-import { GetterTree, ActionTree, MutationTree, ModuleTree, Module, Store, ActionContext } from 'vuex';
+import { Module, Store, ActionContext } from 'vuex';
 import { AxiosRequestConfig } from 'axios';
 
 export declare interface EasyStoreInstance<S, R> {
@@ -15,8 +15,9 @@ export declare interface EasyStoreInstance<S, R> {
    * 注册 state
    * @param {string} type 类型标识
    * @param {any} [value=null] 初始化数据
+   * @param {Boolean} [increment=false] 是否使用增量保存方法将数据保存到 state
    */
-  registerState(type: string, value?: S): void;
+  registerState(type: string, value?: S, increment?: boolean): void;
 
   /**
    * 注册 getter
@@ -29,8 +30,9 @@ export declare interface EasyStoreInstance<S, R> {
    * 注册 mutation
    * @param {string} type 类型标识
    * @param {EasyStoreMutation<any>} [mutation=null] 初始化数据
+   * @param {Boolean} [increment=false] 是否使用增量保存方法将数据保存到 state
    */
-  registerMutation(type: string, mutation?: EasyStoreMutation<S>): void;
+  registerMutation(type: string, mutation?: EasyStoreMutation<S>, increment?: boolean): void;
 
   /**
    * 注册 Action 方法
@@ -44,6 +46,8 @@ export declare interface EasyStoreInstance<S, R> {
   /**
    * 注册单个 store 模块
    * <p>目的旨在简化 store 注册结构，减少重复劳动。</p>
+   * <p>在不指定 scheme 参数的默认情况下，state, getter, mutation 都会注册</p>
+   * <p>在指定 increment 增量保存数据开关为打开状态时，必须保障对应的 state 为 Object 类型</p>
    * @param {EasyStoreConfig} option 配置
    */
   register(option: EasyStoreConfig<S, R>): void;
@@ -51,7 +55,7 @@ export declare interface EasyStoreInstance<S, R> {
   /**
    * 输出 Store.Module 配置数据
    */
-  output(): Module<S, R>;
+  output(): EasyStoreModule<S, R>;
 }
 
 export interface CommonParams {
@@ -78,7 +82,18 @@ export interface EasyStoreModule<S, R> {
   getters?: GetterTree<S, R>;
   actions?: ActionTree<S, R>;
   mutations?: MutationTree<S>;
-  modules?: ModuleTree<R>;
+}
+
+export interface GetterTree<S, R> {
+  [key: string]: EasyStoreGetter<S, R>;
+}
+
+export interface ActionTree<S, R> {
+  [key: string]: EasyStoreAction<S, R>;
+}
+
+export interface MutationTree<S> {
+  [key: string]: EasyStoreMutation<S>;
 }
 
 export type EasyStoreGetter<S, R> = (state: S, getters: any, rootState: R, rootGetters: any) => any;
