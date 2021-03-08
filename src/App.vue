@@ -25,6 +25,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import { get } from '@mudas/util';
 import * as Types from '@/store/types';
 
 export default {
@@ -39,10 +40,8 @@ export default {
 
   filters: {
     get(input, path) {
-      console.warn(input, path, input[path]);
-      return path.split('.').reduce((result, cur) => {
-        return result && result[cur] || undefined;
-      }, input);
+      console.warn(input, path, input[path], get(input, path));
+      return get(input, path);
     }
   },
 

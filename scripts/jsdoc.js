@@ -20,7 +20,7 @@ dir.forEach(file => {
   const fileData = path.parse(file.name);
   const realpath = path.resolve(libPath, file.name);
 
-  if (exclude.indexOf(fileData.name) !== -1) return;
+  if (!file.isFile() || exclude.indexOf(fileData.name) !== -1) return;
 
   jsdoc2md.render({
     files: realpath,
