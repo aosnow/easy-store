@@ -37,7 +37,7 @@ export default class EasyStore {
    * @param {EasyStoreModule} [options=null] 参数同 register()
    */
   constructor(config = null, options = null) {
-    this._store = { ...EasyStore.Template, ...options };
+    this._store = { ...EasyStore.genTemplate(), ...options };
 
     if (Array.isArray(config)) {
       config.forEach(conf => this.register(conf));
@@ -49,18 +49,6 @@ export default class EasyStore {
   // Class properties
   //
   // --------------------------------------------------------------------------
-
-  // ----------------------------------------
-  // 默认模板
-  // ----------------------------------------
-
-  static Template = {
-    namespaced: true, // 强制使用 namespaced 命名空间路径
-    state: Object.create(null),
-    getters: Object.create(null),
-    mutations: Object.create(null),
-    actions: Object.create(null)
-  };
 
   // ----------------------------------------
   // 子级 store 存储空间
@@ -77,6 +65,20 @@ export default class EasyStore {
   // Class methods
   //
   // --------------------------------------------------------------------------
+
+  /**
+   * 生成模块基础默认模板
+   * @return {EasyStoreModule}
+   */
+  static genTemplate() {
+    return {
+      namespaced: true, // 强制使用 namespaced 命名空间路径
+      state: Object.create(null),
+      getters: Object.create(null),
+      mutations: Object.create(null),
+      actions: Object.create(null)
+    };
+  }
 
   /**
    * 当前 type 对应的模块是否开启增量保存

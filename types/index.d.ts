@@ -30,7 +30,7 @@ export interface MergeOptions {
  *  Shop
  * ]);
  */
-export function merge(modules: ChildModule, options?: MergeOptions): ChildModule;
+export function merge(modules: ChildModule[], options?: MergeOptions): ChildModule;
 
 /**
  * 对指定 state 进行增量数据修改或者增加

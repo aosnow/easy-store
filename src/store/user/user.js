@@ -10,7 +10,7 @@ import EasyStore, { namespace } from '@mudas/store';
 
 const Config = [
   {
-    type: namespace(Types.SWEEP_USER_INFO),
+    type: namespace(Types.USER_INFO),
     // state: {
     //   other: {
     //     a: 1
@@ -33,7 +33,7 @@ const Config = [
     action(context, params, conf) {
       return Vue.http.get('/index/getUserInfo', { ...params }, conf)
                 .then(({ data }) => {
-                  context.commit(namespace(Types.SWEEP_USER_INFO), data.data);
+                  context.commit(namespace(Types.USER_INFO), data.data);
                   return Promise.resolve(data.data);
                 })
                 .catch(reason => Promise.reject(reason));

@@ -9,5 +9,6 @@ import * as Module from './module';
 // --------------------------------------------------------------------------
 // 扫码点餐信息
 // --------------------------------------------------------------------------
-export const SWEEP_USER_INFO = `${Module.SWEEP}/userinfo`; // 用户信息
 export const SWEEP_SHOP_INFO = `${Module.SWEEP}/shopinfo`; // 店铺信息
+
+export const USER_INFO = `${Module.USER}/userinfo`; // 用户信息
