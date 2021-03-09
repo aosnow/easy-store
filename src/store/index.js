@@ -9,13 +9,15 @@ import Vuex from 'vuex';
 import * as Module from './types/module';
 
 import Sweep from './sweep';
+import User from './user';
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
   strict: true,
   modules: {
-    [Module.SWEEP]: Sweep
+    [Module.SWEEP]: Sweep,
+    [Module.USER]: User
   }
 });
 

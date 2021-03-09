@@ -9,3 +9,6 @@
 
 // 扫码点餐
 export const SWEEP = 'sweep';
+
+// 扫码点餐
+export const USER = 'user';

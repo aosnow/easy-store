@@ -1,6 +1,6 @@
 {
 	"name": "@mudas/store",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"description": "Use vuex in a more concise and convenient way",
 	"author": "张雄军 <zxj@blibao.cn>",
 	"license": "MIT",

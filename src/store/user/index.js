@@ -5,8 +5,8 @@
 // ------------------------------------------------------------------------------
 
 import { merge } from '@mudas/store';
-import Shop from './shop';
+import User from './user';
 
 export default merge([
-  Shop
+  User
 ]);

@@ -47,14 +47,14 @@ export default {
 
   computed: {
     ...mapGetters({
-      userInfo: Types.SWEEP_USER_INFO,
+      userInfo: Types.USER_INFO,
       shopInfo: Types.SWEEP_SHOP_INFO
     })
   },
 
   methods: {
     requestUser() {
-      this.$store.dispatch(Types.SWEEP_USER_INFO, { authMode: 1, buyerId: '2088002288842095' })
+      this.$store.dispatch(Types.USER_INFO, { authMode: 1, buyerId: '2088002288842095' })
           .catch(reason => this.$message({ type: 'error', message: reason.message }));
     },
 
