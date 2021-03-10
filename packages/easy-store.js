@@ -37,7 +37,7 @@ export default class EasyStore {
    * @param {EasyStoreModule} [options=null] 参数同 register()
    */
   constructor(config = null, options = null) {
-    this._store = { ...EasyStore.genTemplate(), ...options };
+    this._store = { ...EasyStore._genTemplate(), ...options };
 
     if (Array.isArray(config)) {
       config.forEach(conf => this.register(conf));
@@ -69,8 +69,9 @@ export default class EasyStore {
   /**
    * 生成模块基础默认模板
    * @return {EasyStoreModule}
+   * @private
    */
-  static genTemplate() {
+  static _genTemplate() {
     return {
       namespaced: true, // 强制使用 namespaced 命名空间路径
       state: Object.create(null),

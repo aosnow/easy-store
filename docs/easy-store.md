@@ -1,9 +1,6 @@
 ## Functions
 
 <dl>
-<dt><a href="#genTemplate">genTemplate()</a> ⇒ <code>EasyStoreModule</code></dt>
-<dd><p>生成模块基础默认模板</p>
-</dd>
 <dt><a href="#registerState">registerState(type, [value], [increment])</a></dt>
 <dd><p>注册 state</p>
 </dd>
@@ -26,12 +23,6 @@
 </dd>
 </dl>
 
-<a name="genTemplate"></a>
-
-## genTemplate() ⇒ <code>EasyStoreModule</code>
-生成模块基础默认模板
-
-**Kind**: global function  
 <a name="registerState"></a>
 
 ## registerState(type, [value], [increment])

@@ -108,8 +108,6 @@ export interface ActionObject<S, R> {
 }
 
 export declare interface EasyStoreStatic<S, R> {
-  Template: EasyStoreModule<S, R>;
-
   new(config: EasyStoreConfig<S, R>[], options?: EasyStoreModule<S, R>): EasyStoreInstance<S, R>;
 }
 
