@@ -11,16 +11,16 @@ import EasyStore, { namespace } from '@mudas/store';
 const Config = [
   {
     type: namespace(Types.USER_INFO),
-    // state: {
-    //   other: {
-    //     a: 1
-    //   },
-    //   memberInfo: {
-    //     uid: '',
-    //     nick: ''
-    //   }
-    // },
-    // increment: true,
+    state: {
+      other: {
+        a: 1
+      },
+      memberInfo: {
+        uid: '',
+        nick: ''
+      }
+    },
+    increment: true,
     params: {
       data: { a: 10 },
       config: { headers: { 'custom-head': 'test' } }

@@ -1,6 +1,6 @@
 {
   "name": "@mudas/store",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Use vuex in a more concise and convenient way",
   "author": "张雄军 <zxj@blibao.cn>",
   "license": "MIT",
@@ -14,7 +14,10 @@
     "type": "git",
     "url": "https://github.com/aosnow/easy-store"
   },
-  "keywords": [ "vuex", "store" ],
+  "keywords": [
+    "vuex",
+    "store"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "rollup -c",
@@ -42,11 +45,12 @@
     "fsevents": "*"
   },
   "peerDependencies": {
-    "@mudas/util": ">=0.0.5",
+    "@mudas/util": ">=0.0.10",
     "core-js": ">=3.6.5"
   },
   "devDependencies": {
     "@mudas/http": "^0.0.29",
+    "@mudas/util": "0.0.10",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-unit-jest": "~4.5.0",

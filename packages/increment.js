@@ -22,6 +22,6 @@ export function increment(state, data) {
   }
 }
 
-function _mergeValue(objValue, srcValue, key, object, source) {
-  Vue.set(object, key, srcValue);
+function _mergeValue(target, key, newValue) {
+  Vue.set(target, key, newValue);
 }
